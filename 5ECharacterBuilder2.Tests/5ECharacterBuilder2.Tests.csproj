@@ -12,4 +12,8 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.2.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\5ECharacterBuilder2.Main\5ECharacterBuilder2.Main.csproj" />
+  </ItemGroup>
+
 </Project>
