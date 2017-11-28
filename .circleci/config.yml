@@ -1,0 +1,16 @@
+version: 2
+jobs:
+  build:
+    working_directory: /temp
+    docker:
+      - image: microsoft/dotnet:sdk
+    environment:
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
+      DOTNET_CLI_TELEMETRY_OPTOUT: 1
+    steps:
+      - checkout
+      - run: dotnet restore
+      - run: dotnet build
+      - run: dotnet test ./5ECharacterBuilder2.Tests/5ECharacterBuilder2.Tests.csproj --no-build --no-restore -l "trx;LogFileName=/Reports/Report.xml"
+      - store_test_results: 
+          path: /Reports
