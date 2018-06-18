@@ -1,0 +1,10 @@
+﻿{
+  "type": "Race",
+  "name": "Human",
+  "features": [
+    {
+      "AttributeEffectCollections": [
+      ]
+    }
+  ]
+}

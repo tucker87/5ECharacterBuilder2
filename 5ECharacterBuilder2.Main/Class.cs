@@ -1,12 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace _5ECharacterBuilder2.Main
+﻿namespace _5ECharacterBuilder2.Main
 {
-    public abstract class Class
+    public class Class : EffectCollection<Class>
     {
+        public string Name { get; set; }
         public int Level { get; set; } = 1;
-        public List<Func<int>> BonusValues { get; set; } = Enumerable.Repeat<Func<int>>(() => 0, 6).ToList();
+        public string Path { get; set; }
+
+        public Class(string name, int level = 1)
+        {
+            Name = name;
+            Level = level;
+        }
+
+        public Class SetLevel(int level)
+        {
+            Level = level;
+            return this;
+        }
     }
 }

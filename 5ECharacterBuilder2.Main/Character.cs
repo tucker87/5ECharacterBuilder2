@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace _5ECharacterBuilder2.Main
 {
@@ -10,16 +12,7 @@ namespace _5ECharacterBuilder2.Main
         }
 
         public AttributeCollection Attributes { get; set; }
-        public List<Class> Classes { get; set; } = new List<Class>();
+        public List<Class> Classes { get; set; }
         public Race Race { get; set; }
-    }
-
-    public class TestRace : Race
-    {
-        public TestRace()
-        {
-            Name = "TestRace";
-            BonusValues[0] = 2;
-        }
     }
 }

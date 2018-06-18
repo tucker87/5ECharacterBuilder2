@@ -1,0 +1,18 @@
+﻿{
+  "type": "Class",
+  "name": "Rogue",
+  "features": [
+    {
+      "AttributeEffectCollections": [
+        {
+          "base": {
+            "2": [ { "code": "Attributes.Dexterity.BaseValue += 1" } ]
+          },
+          "Assassin": {
+            "2": [ { "code": "Attributes.Dexterity.BaseValue += 2" } ]
+          }
+        }
+      ]
+    }
+  ]
+}

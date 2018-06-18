@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using System.Linq;
 using Xunit;
 using _5ECharacterBuilder2.Main;
+using _5ECharacterBuilder2.ParserNS;
 
 namespace _5ECharacterBuilder2.Tests
 {
@@ -31,93 +31,46 @@ namespace _5ECharacterBuilder2.Tests
             Assert.Equal(10, character.Attributes.Wisdom.Value);
             Assert.Equal(10, character.Attributes.Constitution.Value);
         }
-
+        
         [Fact]
-        public void Characters_Have_Class_Levels_Starting_At_1()
+        public async void Classes_Can_Effect_BaseAttributes()
         {
             //Arrange
-            //Act
-            var character = new Character
-            {
-                Classes = new List<Class> { new TestClass() }
-            };
-            //Assert
-            Assert.IsType<TestClass>(character.Classes.First());
-            Assert.Equal(1, character.Classes.First().Level);
-        }
+            var parser = new Parser("TestInputs");
 
+            //Act
+            var character1 = await parser.LoadCharacter(new Character
+            {
+                Race = new Race("TestRace"),
+                Classes = new List<Class> {new Class("TestClass")}
+            });
+
+            var character2 = await parser.LoadCharacter(new Character
+            {
+                Race = new Race("TestRace"),
+                Classes = new List<Class> {new Class("TestClass", 2)}
+            });
+            
+            //Assert
+            Assert.Equal(12, character1.Attributes.Strength.BaseValue);
+            Assert.Equal(14, character2.Attributes.Strength.BaseValue);
+        }
+        
         [Fact]
-        public void Characters_Classes_Can_Alter_Attribute_Bonuses()
+        public async void Effects_Are_Based_On_Level()
         {
             //Arrange
+            var parser = new Parser("TestInputs");
+
             //Act
-            var character = new Character
+            var character = await parser.LoadCharacter(new Character
             {
-                Classes = new List<Class> {new TestClass()}
-            };
-
+                Race = new Race("TestRace"),
+                Classes = new List<Class> {new Class("TestClass", 3)}
+            });
+            
             //Assert
-            Assert.Equal(12, character.Attributes.Strength.Value);
-        }
-
-        [Theory]
-        [InlineData(2, 14)]
-        [InlineData(3, 16)]
-        [InlineData(4, 18)]
-        public void Characters_Classes_Can_Alter_Attribute_Bonuses_Based_On_Level(int level, int stat)
-        {
-            //Arrange
-            //Act
-            var character = new Character
-            {
-                Classes = new List<Class> {new TestClass {Level = level}}
-            };
-
-            //Assert
-            Assert.Equal(stat, character.Attributes.Strength.Value);
-        }
-
-        [Fact]
-        public void Characters_Can_Have_A_Race()
-        {
-            //Arrange
-            //Act
-            var character = new Character
-            {
-                Race = new TestRace()
-            };
-
-            //Assert
-            Assert.Equal("TestRace", character.Race.Name);
-        }
-
-        [Fact]
-        public void Characters_Race_Can_Alter_Attribute_Bonuses()
-        {
-            //Arrange
-            //Act
-            var character = new Character
-            {
-                Race = new TestRace()
-            };
-
-            //Assert
-            Assert.Equal(12, character.Attributes.Strength.Value);
-        }
-
-        [Fact]
-        public void Characters_Race_And_Class_Attribute_Bonuses_Can_Stack()
-        {
-            //Arrange
-            //Act
-            var character = new Character
-            {
-                Race = new TestRace(),
-                Classes = new List<Class> { new TestClass() }
-            };
-
-            //Assert
-            Assert.Equal(14, character.Attributes.Strength.Value);
+            Assert.Equal(14, character.Attributes.Strength.BaseValue);
         }
     }
 }

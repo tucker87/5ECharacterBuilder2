@@ -1,0 +1,19 @@
+﻿{
+  "type": "Class",
+  "name": "TestClass",
+  "features": [
+    {
+      "AttributeEffectCollections": [
+        {
+          "base": {
+            "1": [ { "code": "Attributes.Strength.BaseValue += 1" } ],
+            "2": [ { "code": "Attributes.Strength.BaseValue += 2" } ]
+          },
+          "a": {
+            "2": [ { "code": "Attributes.Dexterity.BaseValue += 2" } ]
+          }
+        }
+      ]
+    }
+  ]
+}

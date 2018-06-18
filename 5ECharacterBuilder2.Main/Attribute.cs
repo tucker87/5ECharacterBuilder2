@@ -16,6 +16,6 @@ namespace _5ECharacterBuilder2.Main
         public int BaseValue { get; set; } = 10;
 
         public int Modifier => (int)Math.Floor((decimal)(Value - 10) / 2);
-        public int Value => BaseValue + _attributeCollection.BonusValues()[_index];
+        public int Value => BaseValue;
     }
 }

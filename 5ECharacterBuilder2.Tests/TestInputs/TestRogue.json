@@ -1,0 +1,11 @@
+﻿{
+  "name": "Ketchup",
+  "race": { "name": "Human" },
+  "classes": [
+    {
+      "name": "Rogue",
+      "level": 2,
+      "path": "Assassin"
+    }
+  ]
+}
