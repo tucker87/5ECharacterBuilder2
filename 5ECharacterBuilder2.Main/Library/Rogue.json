@@ -3,7 +3,7 @@
   "name": "Rogue",
   "features": [
     {
-      "AttributeEffectCollections": [
+      "AttributeEffects": [
         {
           "base": {
             "2": [ { "code": "Attributes.Dexterity.BaseValue += 1" } ]
@@ -13,6 +13,16 @@
           }
         }
       ]
+    },
+    {
+      "Name": "Expertise",
+      "Description": "Some Text"
+    },
+    {
+      "Name": "Sneak Attack"
+    },
+    {
+      "Name": "Thieves' Cant"
     }
   ]
 }

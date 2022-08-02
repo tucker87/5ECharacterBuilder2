@@ -1,31 +1,5 @@
-﻿{
+{
   Attributes: {
-    List: [
-      {
-        BaseValue: 10,
-        Value: 10
-      },
-      {
-        BaseValue: 11,
-        Value: 11
-      },
-      {
-        BaseValue: 10,
-        Value: 10
-      },
-      {
-        BaseValue: 10,
-        Value: 10
-      },
-      {
-        BaseValue: 10,
-        Value: 10
-      },
-      {
-        BaseValue: 10,
-        Value: 10
-      }
-    ],
     Strength: {
       BaseValue: 10,
       Value: 10
@@ -58,7 +32,9 @@
       Path: ,
       Features: [
         {
-          AttributeEffectCollections: [
+          Name: ,
+          Description: ,
+          AttributeEffects: [
             {
               base: {
                 2: [
@@ -76,6 +52,18 @@
               }
             }
           ]
+        },
+        {
+          Name: Expertise,
+          Description: Some Text
+        },
+        {
+          Name: Sneak Attack,
+          Description: 
+        },
+        {
+          Name: Thieves' Cant,
+          Description: 
         }
       ],
       AllEffects: [
@@ -90,9 +78,6 @@
   ],
   Race: {
     Name: Human,
-    Features: [
-      {}
-    ],
     AllEffects: []
   }
 }

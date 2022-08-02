@@ -3,7 +3,7 @@
   "name": "TestClass",
   "features": [
     {
-      "AttributeEffectCollections": [
+      "AttributeEffects": [
         {
           "base": {
             "1": [ { "code": "Attributes.Strength.BaseValue += 1" } ],

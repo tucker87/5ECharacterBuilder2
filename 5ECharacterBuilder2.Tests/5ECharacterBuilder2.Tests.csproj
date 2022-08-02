@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\5ECharacterBuilder2.Main\5ECharacterBuilder2.Main.csproj" />
-    <ProjectReference Include="..\5ECharacterBuilder2.Parser\5ECharacterBuilder2.Parser.csproj" />
   </ItemGroup>
 
   <ItemGroup>

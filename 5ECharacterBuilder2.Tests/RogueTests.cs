@@ -1,21 +1,20 @@
-﻿using _5ECharacterBuilder2.ParserNS;
+﻿using _5ECharacterBuilder2.Main;
 
-namespace _5ECharacterBuilder2.Tests
+namespace _5ECharacterBuilder2.Tests;
+
+[UsesVerify]
+public class RogueTests
 {
-    [UsesVerify]
-    public class RogueTests
+    [Fact]
+    public async Task Can_Load_A_Character()
     {
-        [Fact]
-        public async Task Can_Load_A_Character()
-        {
-            //Arrange
-            var parser = new Parser();
+        //Arrange
+        var parser = new Parser();
 
-            //Act
-            var character = await parser.LoadCharacter("TestInputs/TestRogue.json");
+        //Act
+        var character = await parser.LoadCharacter("TestInputs/TestRogue.json");
             
-            //Assert
-            await Verify(character);
-        }
+        //Assert
+        await Verify(character);
     }
 }

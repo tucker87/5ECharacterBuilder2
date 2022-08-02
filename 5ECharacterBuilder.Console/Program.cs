@@ -1,10 +1,9 @@
-﻿namespace _5ECharacterBuilder.Console
+﻿namespace _5ECharacterBuilder.Console;
+
+public class Program
 {
-    public class Program
+    public static void Main(string[] args)
     {
-        public static void Main(string[] args)
-        {
             
-        }
     }
 }
