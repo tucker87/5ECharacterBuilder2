@@ -55,6 +55,7 @@
     {
       Name: Rogue,
       Level: 2,
+      Path: ,
       Features: [
         {
           AttributeEffectCollections: [

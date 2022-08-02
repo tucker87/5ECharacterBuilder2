@@ -7,12 +7,12 @@ namespace _5ECharacterBuilder2.ParserNS
     {
         public Dictionary<string, string> Libraries { get; set; } = new Dictionary<string, string>();
 
-        public Parser(string additionalLibrary = null)
+        public Parser(string? additionalLibrary = null)
         {
             var files = Directory.EnumerateFiles("Library")
                 .Select(f => new KeyValuePair<string, string>(Path.GetFileNameWithoutExtension(f), f));
 
-            IEnumerable<KeyValuePair<string, string>> additionalFiles = null;
+            IEnumerable<KeyValuePair<string, string>>? additionalFiles = null;
             if (!string.IsNullOrEmpty(additionalLibrary))
                 additionalFiles = Directory.EnumerateFiles(additionalLibrary)
                     .Select(f => new KeyValuePair<string, string>(Path.GetFileNameWithoutExtension(f), f));
@@ -63,17 +63,17 @@ namespace _5ECharacterBuilder2.ParserNS
 
         public async Task<Character> Compile(Character character)
         {
-            character.Race = ReadRace(Libraries[character.Race.Name]);
+            character.Race = ReadRace(Libraries[character.Race!.Name]);
 
             for (var i = 0; i < character.Classes.Count; i++)
                 character.Classes[i] = ReadClass(Libraries[character.Classes[i].Name], character.Classes[i].Level);
 
             foreach (var effect in character.Race.AllEffectsOfLevel(character.Classes.Sum(c => c.Level)))
-                await effect.EffectFunc.RunAsync(character);
+                await effect.EffectFunc!.RunAsync(character);
 
             foreach (var characterClass in character.Classes)
             foreach (var effect in characterClass.AllEffectsOfLevel(characterClass.Level))
-                await effect.EffectFunc.RunAsync(character);
+                await effect.EffectFunc!.RunAsync(character);
 
             return character;
         }

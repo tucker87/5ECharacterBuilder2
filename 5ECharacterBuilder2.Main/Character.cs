@@ -10,7 +10,7 @@ namespace _5ECharacterBuilder2.Main
         }
 
         public AttributeCollection Attributes { get; set; }
-        public List<Class> Classes { get; set; }
-        public Race Race { get; set; }
+        public List<Class> Classes { get; set; } = new();
+        public Race? Race { get; set; }
     }
 }
