@@ -10,15 +10,15 @@ namespace _5ECharacterBuilder2.Main
         public AttributeCollection(Character character)
         {
             _character = character;
-            List = Enumerable.Range(0, 6).Select(i => new Attribute(this, i)).ToList();
+            List = Enumerable.Range(0, 6).Select(i => new CharacterAttribute(this, i)).ToList();
         }
 
-        public List<Attribute> List { get; set; }
-        public Attribute Strength => List[0];
-        public Attribute Dexterity => List[1];
-        public Attribute Constitution => List[2];
-        public Attribute Intelligence => List[3];
-        public Attribute Wisdom => List[4];
-        public Attribute Charisma => List[5];
+        public List<CharacterAttribute> List { get; set; }
+        public CharacterAttribute Strength => List[0];
+        public CharacterAttribute Dexterity => List[1];
+        public CharacterAttribute Constitution => List[2];
+        public CharacterAttribute Intelligence => List[3];
+        public CharacterAttribute Wisdom => List[4];
+        public CharacterAttribute Charisma => List[5];
     }
 }

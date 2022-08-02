@@ -1,0 +1,97 @@
+﻿{
+  Attributes: {
+    List: [
+      {
+        BaseValue: 10,
+        Value: 10
+      },
+      {
+        BaseValue: 11,
+        Value: 11
+      },
+      {
+        BaseValue: 10,
+        Value: 10
+      },
+      {
+        BaseValue: 10,
+        Value: 10
+      },
+      {
+        BaseValue: 10,
+        Value: 10
+      },
+      {
+        BaseValue: 10,
+        Value: 10
+      }
+    ],
+    Strength: {
+      BaseValue: 10,
+      Value: 10
+    },
+    Dexterity: {
+      BaseValue: 11,
+      Value: 11
+    },
+    Constitution: {
+      BaseValue: 10,
+      Value: 10
+    },
+    Intelligence: {
+      BaseValue: 10,
+      Value: 10
+    },
+    Wisdom: {
+      BaseValue: 10,
+      Value: 10
+    },
+    Charisma: {
+      BaseValue: 10,
+      Value: 10
+    }
+  },
+  Classes: [
+    {
+      Name: Rogue,
+      Level: 2,
+      Features: [
+        {
+          AttributeEffectCollections: [
+            {
+              base: {
+                2: [
+                  {
+                    Code: Attributes.Dexterity.BaseValue += 1
+                  }
+                ]
+              },
+              Assassin: {
+                2: [
+                  {
+                    Code: Attributes.Dexterity.BaseValue += 2
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      AllEffects: [
+        {
+          Code: Attributes.Dexterity.BaseValue += 1
+        },
+        {
+          Code: Attributes.Dexterity.BaseValue += 2
+        }
+      ]
+    }
+  ],
+  Race: {
+    Name: Human,
+    Features: [
+      {}
+    ],
+    AllEffects: []
+  }
+}

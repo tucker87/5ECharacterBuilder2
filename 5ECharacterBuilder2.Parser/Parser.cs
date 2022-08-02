@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using _5ECharacterBuilder2.Main;
 
 namespace _5ECharacterBuilder2.ParserNS

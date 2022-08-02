@@ -31,7 +31,7 @@ namespace _5ECharacterBuilder2.Tests
         {
             //Arrange
             //Act
-            var attribute = new Attribute(new AttributeCollection(new Character()), 0)
+            var attribute = new CharacterAttribute(new AttributeCollection(new Character()), 0)
             {
                 BaseValue = value
             };
