@@ -1,4 +1,5 @@
 using _5ECharacterBuilder2.Main;
+using _5ECharacterBuilder2.Main.Data;
 
 namespace _5ECharacterBuilder2.Tests;
 
@@ -28,7 +29,7 @@ public class CharacterTests
         Assert.Equal(10, character.Attributes.Wisdom.Value);
         Assert.Equal(10, character.Attributes.Constitution.Value);
     }
-        
+
     [Fact]
     public async void Classes_Can_Effect_BaseAttributes()
     {
@@ -36,23 +37,23 @@ public class CharacterTests
         var parser = new Parser("TestInputs");
 
         //Act
-        var character1 = await parser.LoadCharacter(new Character
+        var levelOneCharacter = await parser.LoadCharacter(new CharacterSave
         {
-            Race = new Race("TestRace"),
-            Classes = new List<Class> {new Class("TestClass")}
+            Race = "TestRace",
+            Classes = new List<ClassSave> { new() { Name = "TestClass" } }
         });
 
-        var character2 = await parser.LoadCharacter(new Character
+        var levelTwoCharacter = await parser.LoadCharacter(new CharacterSave
         {
-            Race = new Race("TestRace"),
-            Classes = new List<Class> {new Class("TestClass", 2)}
+            Race = "TestRace",
+            Classes = new List<ClassSave> { new() { Name = "TestClass", Level = 2 } }
         });
-            
+
         //Assert
-        Assert.Equal(12, character1.Attributes.Strength.BaseValue);
-        Assert.Equal(14, character2.Attributes.Strength.BaseValue);
+        Assert.Equal(12, levelOneCharacter.Attributes.Strength.BaseValue);
+        Assert.Equal(14, levelTwoCharacter.Attributes.Strength.BaseValue);
     }
-        
+
     [Fact]
     public async void Effects_Are_Based_On_Level()
     {
@@ -60,12 +61,12 @@ public class CharacterTests
         var parser = new Parser("TestInputs");
 
         //Act
-        var character = await parser.LoadCharacter(new Character
+        var character = await parser.LoadCharacter(new CharacterSave
         {
-            Race = new Race("TestRace"),
-            Classes = new List<Class> {new Class("TestClass", 3)}
+            Race = "TestRace",
+            Classes = new List<ClassSave> { new() { Name = "TestClass", Level = 3 } }
         });
-            
+
         //Assert
         Assert.Equal(14, character.Attributes.Strength.BaseValue);
     }

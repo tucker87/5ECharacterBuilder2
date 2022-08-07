@@ -4,7 +4,7 @@ namespace _5ECharacterBuilder2.Main;
 
 public class EffectCollection<T>
 {
-    public List<Feature> Features { get; set; } = new List<Feature>();
+    public List<Feature> Features { get; set; } = new();
 
     public IEnumerable<AttributeEffect> AllEffects =>
         Features.SelectMany(f => f.AttributeEffects)
@@ -17,8 +17,7 @@ public class EffectCollection<T>
             .SelectMany(aec => aec.Values)
             .SelectMany(ael => ael.Where(ae => ae.Key <= level))
             .OrderByDescending(l => l.Key)
-            .FirstOrDefault()
-            .Value ?? new List<AttributeEffect>();
+            .SelectMany(l => l.Value);
 
     public EffectCollection<T> Compile()
     {

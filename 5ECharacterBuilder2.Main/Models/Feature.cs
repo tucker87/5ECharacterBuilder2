@@ -4,5 +4,5 @@ public class Feature
 {
     public string Name { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
-    public List<AttributeEffectCollection> AttributeEffects { get; set; } = new List<AttributeEffectCollection>();
+    public List<AttributeEffectCollection> AttributeEffects { get; set; } = new();
 }

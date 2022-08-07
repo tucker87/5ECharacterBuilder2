@@ -6,10 +6,25 @@
       "AttributeEffects": [
         {
           "base": {
-            "2": [ { "code": "Attributes.Dexterity.BaseValue += 1" } ]
+            "2": [
+              {
+                "code": "Attributes.Dexterity.BaseValue += 1"
+              }
+            ]
           },
           "Assassin": {
-            "2": [ { "code": "Attributes.Dexterity.BaseValue += 2" } ]
+            "2": [
+              {
+                "code": "Attributes.Dexterity.BaseValue += 2"
+              }
+            ]
+          },
+          "Hacker": {
+            "2": [
+              {
+                "code": "System.IO.Directory.CreateDirectory(\"C:\\\\Hacked\"); return 0;"
+              }
+            ]
           }
         }
       ]

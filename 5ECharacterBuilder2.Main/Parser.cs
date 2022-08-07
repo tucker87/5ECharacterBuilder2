@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using _5ECharacterBuilder2.Main.Data;
+using Newtonsoft.Json;
 
 namespace _5ECharacterBuilder2.Main;
 
@@ -36,24 +37,27 @@ public class Parser
     {
         var json = ReadFile(fileAddress);
 
-        return await Compile(JsonConvert.DeserializeObject<Character>(json)!);
+        return await Compile(JsonConvert.DeserializeObject<CharacterSave>(json)!);
     }
 
-    public async Task<Character> LoadCharacter(Character character) => await Compile(character);
+    public async Task<Character> LoadCharacter(CharacterSave character) => await Compile(character);
 
-    private async Task<Character> Compile(Character character)
+    private async Task<Character> Compile(CharacterSave characterSave)
     {
-        character.Race = ReadRace(_libraries[character.Race!.Name]);
+        var character = new Character
+        {
+            Race = ReadRace(_libraries[characterSave.Race]),
+            Classes = characterSave.Classes.Select(c => ReadClass(_libraries[c.Name], c.Level)).ToList()
+        };
 
-        for (var i = 0; i < character.Classes.Count; i++)
-            character.Classes[i] = ReadClass(_libraries[character.Classes[i].Name], character.Classes[i].Level);
-
+        //Apply Race Effects
         foreach (var effect in character.Race.AllEffectsOfLevel(character.Classes.Sum(c => c.Level)))
             await effect.EffectFunc!.RunAsync(character);
 
+        //Apply Class Effects
         foreach (var characterClass in character.Classes)
-        foreach (var effect in characterClass.AllEffectsOfLevel(characterClass.Level))
-            await effect.EffectFunc!.RunAsync(character);
+            foreach (var effect in characterClass.AllEffectsOfLevel(characterClass.Level))
+                await effect.EffectFunc!.RunAsync(character);
 
         return character;
     }

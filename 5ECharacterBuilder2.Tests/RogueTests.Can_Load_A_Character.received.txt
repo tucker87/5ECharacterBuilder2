@@ -1,12 +1,13 @@
-{
+﻿{
   Attributes: {
     Strength: {
       BaseValue: 10,
       Value: 10
     },
     Dexterity: {
-      BaseValue: 11,
-      Value: 11
+      BaseValue: 13,
+      Modifier: 1,
+      Value: 13
     },
     Constitution: {
       BaseValue: 10,
@@ -53,7 +54,7 @@
               Hacker: {
                 2: [
                   {
-                    Code: PowerShell ps = PowerShell.Create(); ps.AddCommand("mkdir C:\Hacked"); ps.Invoke();
+                    Code: System.IO.Directory.CreateDirectory("C:\\Hacked"); return 0;
                   }
                 ]
               }
@@ -81,7 +82,7 @@
           Code: Attributes.Dexterity.BaseValue += 2
         },
         {
-          Code: PowerShell ps = PowerShell.Create(); ps.AddCommand("mkdir C:\Hacked"); ps.Invoke();
+          Code: System.IO.Directory.CreateDirectory("C:\\Hacked"); return 0;
         }
       ]
     }
